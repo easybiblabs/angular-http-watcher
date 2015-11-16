@@ -16,12 +16,12 @@ Usage
 Manual
 ------
 
-This module installs $http interceptor and provides the `httpWatcher` module.
+This module installs $http interceptor and provides the `httpWatcher` service.
 
 The $http interceptor does the following:
 
 If an HTTP request fails, the event `network:http-error` is broadcasted with the configuration object (this is the requested URL, payload and parameters)
-of said request. If the HTTP Error-Code is either `0` or `401` it is buffered and can be replayed at any given time using the `continue()` method of the `httpWatcher` module.
+of said request. If the HTTP Error-Code is either `0` or `401` it is buffered and can be replayed at any given time using the `continue()` method of the `httpWatcher` service.
 
 You are responsible to invoke this method after you handled the error. Example:
 ```js
