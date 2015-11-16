@@ -25,16 +25,20 @@ module.exports = function($httpProvider) {
         if (!rejection.config.ignoreHttpWatcher) {
           var storeRequest = defaultSave[rejection.status] || false;
 
-          if (typeof rejection.config.saveOnHttpError !== 'undefined') {
+          if (angular.isDefined(rejection.config.saveOnHttpError)) {
             storeRequest = rejection.config.saveOnHttpError;
           }
 
           $rootScope.$emit(eventName, rejection);
 
           if (storeRequest) {
-            var retries = -1;
+            var retries = 0;
             if (angular.isDefined(rejection.config.headers['X-RETRIES'])) {
               retries = rejection.config.headers['X-RETRIES'];
+
+              if (rejection.config.maxRetries === retries) {
+                return $q.reject(rejection);
+              }
             }
             rejection.config.headers['X-RETRIES'] = retries + 1;
 
