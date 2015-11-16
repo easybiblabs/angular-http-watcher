@@ -20,9 +20,17 @@ This module installs $http interceptor and provides the `httpWatcher` module.
 
 The $http interceptor does the following:
 
-If an HTTP request fails, the event `network:http` is broadcasted with the configuration object (this is the requested URL, payload and parameters)
+If an HTTP request fails, the event `network:http-error` is broadcasted with the configuration object (this is the requested URL, payload and parameters)
 of said request. If the HTTP Error-Code is either `0` or `401` it is buffered and can be replayed at any given time using the `continue()` method of the `httpWatcher` module.
-You are responsible to invoke this method after you handled the error.
+
+You are responsible to invoke this method after you handled the error. Example:
+```js
+/** @ngInject */
+return function(httpWatcher) {
+    httpWatcher.continue();
+};
+```
+
 
 #### Ignoring the interceptor
 
