@@ -18,32 +18,15 @@ module.exports = function($httpProvider) {
       401: true
     };
 
+    var eventName = 'network:http-error';
+
     return {
-      /* eslint-disable complexity */
       responseError: function(rejection) {
         if (!rejection.config.ignoreHttpWatcher) {
-          var eventName = 'network:http-' + rejection.status;
           var storeRequest = defaultSave[rejection.status] || false;
 
           if (typeof rejection.config.saveOnHttpError !== 'undefined') {
             storeRequest = rejection.config.saveOnHttpError;
-          }
-
-          switch (rejection.status) {
-            case 0:
-            case 408:
-              eventName = 'network:http-0';
-              break;
-
-            case 500:
-            case 502:
-            case 503:
-            case 504:
-              eventName = 'network:http-500';
-              break;
-
-            default:
-              break;
           }
 
           $rootScope.$emit(eventName, rejection);
