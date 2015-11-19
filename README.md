@@ -50,7 +50,7 @@ If you need a custom event name oder you want to change the defaults which http 
 Currently support are these values, shown with their default values, all optional:
 ```js
 angular.module('your-app', []).constant('HTTPWATCHER_DEFAULTS', {
-  eventName: 'network:'
+  eventName: 'network:http-error'
   status: {
     0: true,
     401: true,
