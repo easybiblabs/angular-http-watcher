@@ -23,7 +23,7 @@ module.exports = function($httpProvider) {
             storeRequest = rejection.config.saveOnHttpError;
           }
 
-          $rootScope.$emit(config.eventName, rejection);
+          $rootScope.$emit(config.eventNames.error, rejection);
 
           if (storeRequest) {
             var retries = 0;

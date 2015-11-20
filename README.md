@@ -49,9 +49,13 @@ If you need a custom event name oder you want to change the defaults which http 
 
 Currently support are these values, shown with their default values, all optional:
 ```js
-angular.module('your-app', []).config(function(httpWatcherConfigProvider) {	
+angular.module('your-app', []).config(function(httpWatcherConfigProvider) {
   httpWatcherConfigProvider.setConfig({
-    eventName: 'network:http-error',
+    eventNames: {
+      error: 'network:http-error',
+      continue: 'network:continue',
+      reject: 'network:reject'
+    },
     status: {
       0: true,
       408: true,

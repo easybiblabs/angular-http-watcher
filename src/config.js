@@ -1,6 +1,10 @@
 module.exports = function() {
   var config = {
-    eventName: 'network:http-error',
+    eventNames: {
+      error: 'network:http-error',
+      continue: 'network:continue',
+      reject: 'network:reject'
+    },
     status: {
       0: true,
       408: true,
