@@ -45,7 +45,7 @@ You can also limit the number of retries of an HTTP Requests before it gets auto
 
 #### Specifing custom default values
 
-If you need a custom event name oder you want to change the defaults which http statuses are saved and which not in your app, you can do this easily by defining the constant ``HTTPWATCHER_DEFAULTS`` in your app. On initialization this will be used by the interceptor.
+If you need a custom event name oder you want to change the defaults which http statuses are saved and which not in your app, you can do this easily by using the ``httpWatcherConfig`` provider in your app. On initialization this will be used by the interceptor.
 
 Currently support are these values, shown with their default values, all optional:
 ```js
