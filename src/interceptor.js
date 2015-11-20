@@ -11,25 +11,19 @@ module.exports = function($httpProvider) {
    * If you want your request to be ignored, you can use the property
    * ignoreHttpWatcher on the request.
    */
-  $httpProvider.interceptors.push(function($rootScope, $q, httpBuffer) {
-    var defaultSave = {
-      0: true,
-      408: true,
-      401: true
-    };
-
-    var eventName = 'network:http-error';
+  $httpProvider.interceptors.push(function($rootScope, $q, $injector, httpBuffer, httpWatcherConfig) {
+    var config = httpWatcherConfig.getConfig();
 
     return {
       responseError: function(rejection) {
         if (!rejection.config.ignoreHttpWatcher) {
-          var storeRequest = defaultSave[rejection.status] || false;
+          var storeRequest = config.status[rejection.status] || false;
 
           if (angular.isDefined(rejection.config.saveOnHttpError)) {
             storeRequest = rejection.config.saveOnHttpError;
           }
 
-          $rootScope.$emit(eventName, rejection);
+          $rootScope.$emit(config.eventNames.error, rejection);
 
           if (storeRequest) {
             var retries = 0;

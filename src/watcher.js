@@ -1,5 +1,7 @@
-module.exports = function($rootScope, httpBuffer) {
+module.exports = function($rootScope, httpBuffer, httpWatcherConfig) {
   'use strict';
+
+  var config = httpWatcherConfig.getConfig();
 
   return {
     /**
@@ -22,7 +24,7 @@ module.exports = function($rootScope, httpBuffer) {
      */
     continue: function(data, configUpdater) {
       var updater = configUpdater || function(config) {return config;};
-      $rootScope.$emit('network:continue', data);
+      $rootScope.$emit(config.eventNames.continue, data);
       return httpBuffer.retryAll(updater);
     },
 
@@ -35,7 +37,7 @@ module.exports = function($rootScope, httpBuffer) {
      */
     reject: function(data, reason) {
       httpBuffer.rejectAll(reason);
-      $rootScope.$broadcast('network:reject', data);
+      $rootScope.$broadcast(config.eventNames.reject, data);
     }
   };
 };

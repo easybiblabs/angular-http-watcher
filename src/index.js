@@ -13,6 +13,7 @@
     .factory('httpBuffer', require('./buffer'));
 
   angular.module('http-watch', ['http-watch-buffer'])
+    .provider('httpWatcherConfig', require('./config'))
     .factory('httpWatcher', require('./watcher'))
     .config(require('./interceptor'));
 
