@@ -39,10 +39,6 @@ Sometimes you might not want the interceptor to intercept a request even if one 
 
 If needed, you can also add `saveOnHttpError: false|true` to the request config to specifically say you want to allow/disallow buffering a request regardless of the response code.
 
-#### Specifing maximum retries of a http request
-
-You can also limit the number of retries of an HTTP Requests before it gets automatically rejected. By default there is no limit. Setting `maxRetries: 10` will limit retries to 10 times.
-
 #### Specifing custom default values
 
 If you need a custom event name oder you want to change the defaults which http statuses are saved and which not in your app, you can do this easily by using the ``httpWatcherConfig`` provider in your app. On initialization this will be used by the interceptor.
