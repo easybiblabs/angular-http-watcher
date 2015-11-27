@@ -26,16 +26,6 @@ module.exports = function($httpProvider) {
           $rootScope.$emit(config.eventNames.error, rejection);
 
           if (storeRequest) {
-            var retries = 0;
-            if (angular.isDefined(rejection.config.headers['X-RETRIES'])) {
-              retries = rejection.config.headers['X-RETRIES'];
-
-              if (rejection.config.maxRetries === retries) {
-                return $q.reject(rejection);
-              }
-            }
-            rejection.config.headers['X-RETRIES'] = retries + 1;
-
             var deferred = $q.defer();
             httpBuffer.append(rejection.config, deferred);
             return deferred.promise;
