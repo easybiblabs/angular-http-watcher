@@ -17,7 +17,7 @@ module.exports = function($httpProvider) {
     return {
       responseError: function(rejection) {
         if (!rejection.config.ignoreHttpWatcher) {
-          var storeRequest = config.status[rejection.status] || false;
+          var storeRequest = config.status[rejection.status] || true;
 
           if (angular.isDefined(rejection.config.saveOnHttpError)) {
             storeRequest = rejection.config.saveOnHttpError;
