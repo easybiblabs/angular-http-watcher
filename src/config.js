@@ -5,11 +5,7 @@ module.exports = function() {
       continue: 'network:continue',
       reject: 'network:reject'
     },
-    status: {
-      0: true,
-      408: true,
-      401: true
-    }
+    status: {}
   };
 
   this.getConfig = function() {
