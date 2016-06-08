@@ -1,6 +1,6 @@
 {
   "name": "imagineeasy-angular-http-watcher",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Angular HTTP Interceptor to act on failed HTTP request and replay them on a given point in the future",
   "homepage": "https://github.com/easybiblabs/angular-http-watcher",
   "licenses": [
