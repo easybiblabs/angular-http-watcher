@@ -5,8 +5,8 @@
   "homepage": "https://github.com/easybiblabs/angular-http-watcher",
   "licenses": [
      {
-       "type": "MIT",
-       "url": "https://github.com/easybiblabs/angular-http-watcher/blob/master/LICENSE"
+       "type": "Apache-2.0",
+       "url": "https://github.com/easybiblabs/angular-http-watcher/blob/master/LICENSE.txt"
      }
    ],
   "main": "src/index.js",
